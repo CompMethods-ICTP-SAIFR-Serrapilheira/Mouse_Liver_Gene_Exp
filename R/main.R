@@ -154,13 +154,22 @@ plotDendroAndColors(sampleTree2, traitColors,
                     main = "Sample dendrogram and trait heatmap")
 
 #Now we choose coexpression powers to calculate adjacency, as softsoft-tresholds,
-#bases on network topology.
+#based on network topology.
 
-powers = c(c(1:10), seq(from = 12, to=24, by=2))
-sft = pickSoftThreshold(LiverDF_filtered, dataIsExpr = TRUE, powerVector = powers,  corFnc = cor,networkType = "signed")
+powers <- c(c(1:10), seq(from = 12, to=24, by=2))
+
+
+#.-------------------TODO NPI QUE HACE ESTO------------REVISAR
+
+sft <- pickSoftThreshold(LiverDF_filtered, dataIsExpr = TRUE, powerVector = powers,  corFnc = cor,networkType = "signed")
+
+
+
+#---------------TODO CHANGE WITH ANDREAS' THINGS
+
 sft_df <- data.frame(sft$fitIndices) %>%
   dplyr::mutate(model_fit = -sign(slope) * SFT.R.sq)
-ggplot(sft_df, aes(x = Power, y = model_fit, label = Power)) +
+  ggplot(sft_df, aes(x = Power, y = model_fit, label = Power)) +
   geom_point() +
   geom_text(nudge_y = 0.1) +
   geom_hline(yintercept = 0.80, col = "red") +
@@ -170,6 +179,8 @@ ggplot(sft_df, aes(x = Power, y = model_fit, label = Power)) +
   ggtitle("Scale independence") +
   theme_classic()
 
+#---------------TODO CHANGE WITH ANDREAS' THINGS
+  
 sizeGrWindow(9, 5)
 par(mfrow = c(1,2));
 cex1 = 0.9;
@@ -185,9 +196,13 @@ plot(sft$fitIndices[,1], sft$fitIndices[,5],
      main = paste("Mean connectivity"))
 text(sft$fitIndices[,1], sft$fitIndices[,5], labels=powers, cex=cex1,col="red")
 
+
+#----POWER SOFT THRESHOLD 
+#A power is picked for adjacency matrix and network creation.
+#It is based on the threshold 
 #PUNTO 2: Escoger un potenciador soft treshold para la produccion de la matriz de adyacencias y la red,
 #basado en el umbral de R^2 establecido en la grafica
-potenciador = 12 #cambiar de acuerdo a la grÃ¡fica
+potenciador <- 12 #cambiar de acuerdo a la grÃ¡fica
 
 #Con este codigo se corre la red y la asignacion de modulos como clusters de genes 
 #basados en su conectividad, todo se guarda como archivos de R aparte para manejar 
