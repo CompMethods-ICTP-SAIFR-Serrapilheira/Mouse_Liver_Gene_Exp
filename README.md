@@ -15,6 +15,9 @@ First, here is presented the project structure.
                     └── ClinicalTraits.csv
                     └── LiverFemale3600.csv
     *    ├── docs/
+               └── project_report.html
+               └── project_report.Rmd
+               └── ref.bib
     *    ├── figs/
                └── modulesColorsDendogram.png
                └── phenoModRelation.png

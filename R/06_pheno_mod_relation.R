@@ -29,7 +29,7 @@ MEs_Final <- orderMEs(MEs0)
 corModPheno <- cor(MEs_Final, matchingPhenotypeDF, use = "p")
 pValsCor <- corPvalueStudent(corModPheno, nSamples)
 
-# Next graph presents correlations and pvalues between phenotypes and modules
+# Next graph presents correlations between phenotypes and modules
 # which allows us to pick the most relevant ones.
 
 textMatrix <- paste(signif(corModPheno, 2), "\n(",
