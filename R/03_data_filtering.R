@@ -1,6 +1,6 @@
 # Evaluation for Computational Methods ICTP-Serrapilheira 
 
-#This code filters information for both gene expression and phenotype datasets.
+# This code filters information for both gene expression and phenotype datasets.
 
 #------------------------EXPRESSION MATRIX (EM) HANDLING------------------------
 

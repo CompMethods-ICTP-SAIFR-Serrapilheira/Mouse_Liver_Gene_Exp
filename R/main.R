@@ -1,6 +1,6 @@
 # Evaluation for Computational Methods ICTP-Serrapilheira 
 
-#This script runs all the scripts. Each script has its own explanation inside.
+# This script runs all the scripts. Each script has its own explanation inside.
 
 source("R/01_read_data.R")
 source("R/02_packages_and_parameters.R")
